@@ -10,14 +10,14 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
 
   const mailSubject = subject;
   const mailBody = `From: ${email}\n\n${message}\n\n— ${name}`;
-  const mailtoLink = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+  const gmailComposeLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
 
   const button = e.target.querySelector('button[type="submit"]');
   const original = button.textContent;
-  button.textContent = 'Opening Email Client...';
+  button.textContent = 'Opening Gmail...';
   button.disabled = true;
 
-  window.location.href = mailtoLink;
+  window.open(gmailComposeLink, '_blank');
 
   setTimeout(() => {
     button.textContent = original;
